@@ -13,7 +13,9 @@ export const mapStateToProps = (
   state: AppState,
   ownProps: CellContainerProps
 ): CellStateProps => ({
-  isRevealed: state.gameState.revealedPositions[ownProps.index],
+  isRevealed:
+    state.gameState.revealedPositions[ownProps.index] ||
+    state.gamePhase != "InProgress",
   isFlagged: state.gameState.flaggedPositions[ownProps.index],
   isMine: state.gameState.minePositions[ownProps.index],
   numberOfNeighbourMines: state.gameState.neighbourMineCounts[ownProps.index]

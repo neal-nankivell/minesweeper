@@ -1,11 +1,7 @@
 import "./CellGrid.css";
 import React from "react";
-import CellContainer from "../CellComponent/CellConainer";
-
-interface CellGridProps {
-  height: number;
-  width: number;
-}
+import CellContainer from "../Cell/CellConainer";
+import { CellGridProps } from "./CellGridProps";
 
 class CellGrid extends React.PureComponent<CellGridProps> {
   render() {

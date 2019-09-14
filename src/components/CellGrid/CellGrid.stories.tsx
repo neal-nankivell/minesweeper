@@ -4,6 +4,8 @@ import CellGrid from "./CellGrid";
 import { Provider } from "react-redux";
 import store from "../../Store";
 import { startGame } from "../../actions/gameActions";
+import GameStatusContainer from "../GameStatus/GameStatusContainer";
+import CellGridContainer from "./CellGridContainer";
 
 storiesOf("CellGrid", module)
   //   .addDecorator(component => {
@@ -16,7 +18,8 @@ storiesOf("CellGrid", module)
     demoStore.dispatch(startGame());
     return (
       <Provider store={demoStore}>
-        <CellGrid height={10} width={10} />
+        <GameStatusContainer />
+        <CellGridContainer />
       </Provider>
     );
   });

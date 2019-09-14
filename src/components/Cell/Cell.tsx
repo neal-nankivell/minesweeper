@@ -17,7 +17,12 @@ const Cell: React.FC<CellProps> = (props: CellProps) => {
     <div
       className={`cell ${props.isRevealed ? "revealed" : ""}`}
       onClick={props.onClick}
-      onContextMenu={props.onContextMenu}
+      onContextMenu={e => {
+        e.preventDefault();
+        e.stopPropagation();
+        props.onContextMenu();
+        return false;
+      }}
     >
       {value}
     </div>

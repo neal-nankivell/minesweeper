@@ -4,8 +4,8 @@ const InitialState: AppState = {
   gamePhase: "Setup",
   gameConfiguration: {
     height: 8,
-    width: 8,
-    mines: 10
+    width: 20,
+    mines: 15
   },
   gameState: {
     flaggedPositions: [],
