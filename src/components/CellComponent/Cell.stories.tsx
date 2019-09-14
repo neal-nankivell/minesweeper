@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, boolean, number } from "@storybook/addon-knobs/react";
-import Cell from "../components/Cell";
+import Cell from "./Cell";
 import { action } from "@storybook/addon-actions";
 
 storiesOf("Cell", module)

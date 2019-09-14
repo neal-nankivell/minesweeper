@@ -1,5 +1,5 @@
 export interface GameState {
-  minesPositions: boolean[];
+  minePositions: boolean[];
   revealedPositions: boolean[];
   flaggedPositions: boolean[];
   neighbourMineCounts: number[];

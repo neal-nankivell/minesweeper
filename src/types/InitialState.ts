@@ -9,7 +9,7 @@ const InitialState: AppState = {
   },
   gameState: {
     flaggedPositions: [],
-    minesPositions: [],
+    minePositions: [],
     neighbourMineCounts: [],
     revealedPositions: []
   }

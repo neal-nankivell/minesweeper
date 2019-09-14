@@ -1,14 +1,6 @@
 import "./Cell.css";
 import React from "react";
-
-export interface CellProps {
-  isRevealed: boolean;
-  isFlagged: boolean;
-  isMine: boolean;
-  numberOfNeighbourMines: number;
-  onClick: () => void;
-  onContextMenu: () => void;
-}
+import CellProps from "./CellProps";
 
 const Cell: React.FC<CellProps> = (props: CellProps) => {
   let value: string = "";
@@ -18,7 +10,7 @@ const Cell: React.FC<CellProps> = (props: CellProps) => {
     if (props.isMine) {
       value = "☀";
     } else if (props.numberOfNeighbourMines !== 0) {
-      value = props.numberOfNeighbourMines.toString();
+      value = `${props.numberOfNeighbourMines}`;
     }
   }
   return (
