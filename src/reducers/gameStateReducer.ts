@@ -4,7 +4,8 @@ import {
   startGame,
   revealCell,
   toggleCellFlag,
-  restartGame
+  restartGame,
+  hint
 } from "../actions/gameActions";
 import { getType } from "typesafe-actions";
 import AppState from "../types/AppState";
@@ -27,10 +28,10 @@ const applyStartGame = (state: AppState): AppState => {
     choosenPositions.add(position);
     minesPositions[position] = true;
 
-    const incrementAbove = position % config.width != position;
+    const incrementAbove = position % config.width !== position;
     const incrementBelow = position + config.width < size;
-    const incrementLeft = position % config.width != 0;
-    const incrementRight = position % config.width != config.width - 1;
+    const incrementLeft = position % config.width !== 0;
+    const incrementRight = position % config.width !== config.width - 1;
 
     if (incrementAbove) {
       neighbourMineCounts[position - config.width]++;
@@ -75,7 +76,7 @@ const applyRevealCell = (
   action: ReturnType<typeof revealCell>
 ): AppState => {
   if (
-    state.gamePhase != "InProgress" ||
+    state.gamePhase !== "InProgress" ||
     state.gameState.flaggedPositions[action.payload.cell]
   ) {
     return state;
@@ -92,9 +93,9 @@ const applyRevealCell = (
   var positionsToReveal = [action.payload.cell];
   var indexToCheck = positionsToReveal.pop();
 
-  while (indexToCheck != undefined) {
+  while (indexToCheck !== undefined) {
     revealedPositions[indexToCheck] = true;
-    if (state.gameState.neighbourMineCounts[indexToCheck] == 0) {
+    if (state.gameState.neighbourMineCounts[indexToCheck] === 0) {
       var adjcent = getAdjucentIndexPositions(
         indexToCheck,
         state.gameConfiguration.height,
@@ -107,7 +108,7 @@ const applyRevealCell = (
   }
 
   let won =
-    revealedPositions.filter(v => v).length ==
+    revealedPositions.filter(v => v).length ===
     state.gameConfiguration.height * state.gameConfiguration.width -
       state.gameConfiguration.mines;
 
@@ -125,7 +126,7 @@ const applyToggleCellFlag = (
   state: AppState,
   action: ReturnType<typeof toggleCellFlag>
 ): AppState => {
-  if (state.gamePhase != "InProgress") {
+  if (state.gamePhase !== "InProgress") {
     return state;
   }
   var flags = state.gameState.flaggedPositions.slice();
@@ -140,15 +141,32 @@ const applyToggleCellFlag = (
   };
 };
 
+const applyHint = (state: AppState): AppState => {
+  var revealedPositions = state.gameState.revealedPositions.slice();
+  for (let i = 0; i < revealedPositions.length; i++) {
+    if (!revealedPositions[i] && !state.gameState.minePositions[i]) {
+      revealedPositions[i] = true;
+      break;
+    }
+  }
+  return {
+    ...state,
+    gameState: {
+      ...state.gameState,
+      revealedPositions: revealedPositions
+    }
+  };
+};
+
 const getAdjucentIndexPositions = (
   index: number,
   height: number,
   width: number
 ): number[] => {
-  const validAbove = index % width != index;
+  const validAbove = index % width !== index;
   const validBeow = index + width < height * width;
-  const validLeft = index % width != 0;
-  const validRight = index % width != width - 1;
+  const validLeft = index % width !== 0;
+  const validRight = index % width !== width - 1;
   let result = [];
   if (validAbove) {
     result.push(index - width);
@@ -177,6 +195,8 @@ export default function gameStateReducer(
       return applyRevealCell(state, action);
     case getType(toggleCellFlag):
       return applyToggleCellFlag(state, action);
+    case getType(hint):
+      return applyHint(state);
     default:
       return state;
   }

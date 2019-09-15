@@ -11,7 +11,7 @@ export const GameStatus: React.FC<GameStatusProps> = (
       <p>{props.gamePhase}</p>
       <p>Mines: {props.mines}</p>
       <p>Flags: {props.flags}</p>
-      {props.gamePhase == "Setup" ? startGameButton : restartGameButton}
+      {props.gamePhase === "Setup" ? startGameButton : restartGameButton}
     </div>
   );
 };

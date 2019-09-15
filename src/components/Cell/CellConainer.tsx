@@ -15,7 +15,7 @@ export const mapStateToProps = (
 ): CellStateProps => ({
   isRevealed:
     state.gameState.revealedPositions[ownProps.index] ||
-    (state.gamePhase == "Lost" &&
+    (state.gamePhase === "Lost" &&
       state.gameState.minePositions[ownProps.index]),
   isFlagged: state.gameState.flaggedPositions[ownProps.index],
   isMine: state.gameState.minePositions[ownProps.index],

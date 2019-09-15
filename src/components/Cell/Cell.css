@@ -2,20 +2,19 @@
   background: #fdf6e3;
 }
 .cell {
-  background: #073642;
-  border: 1px solid #eee8d5;
+  background: #586e75;
+  border: 0.5px solid #eee8d5;
   color: #93a1a1;
   float: left;
   font-size: 16px;
   font-weight: bold;
-  line-height: 24px;
-  height: 24px;
+  line-height: 28px;
+  height: 28px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 24px;
+  width: 28px;
   font-family: "Courier New", Courier, monospace;
   user-select: none;
-  border-radius: 20%;
 }

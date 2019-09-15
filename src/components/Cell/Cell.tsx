@@ -18,7 +18,7 @@ const Cell: React.FC<CellProps> = (props: CellProps) => {
   let color: string = "#93a1a1";
   if (!props.isRevealed && props.isFlagged) {
     value = "⚑";
-    color = "#b58900";
+    //color = "#cb4b16";
   } else if (props.isRevealed) {
     if (props.isMine) {
       value = "☀";

@@ -4,9 +4,10 @@ import {
   RESTART_GAME,
   REVEAL_CELL,
   START_GAME,
-  TOGGLE_CELL_FLAG
+  TOGGLE_CELL_FLAG,
+  HINT
 } from "./types";
-import { action, ActionType, createStandardAction } from "typesafe-actions";
+import { ActionType, createStandardAction } from "typesafe-actions";
 
 export const configureGame = createStandardAction(CONFIGURE_GAME).map(
   (config: { height: number; width: number; mineCount: number }) => ({
@@ -17,6 +18,8 @@ export const configureGame = createStandardAction(CONFIGURE_GAME).map(
 export const revealCell = createStandardAction(REVEAL_CELL).map(
   (cell: number) => ({ payload: { cell } })
 );
+
+export const hint = createStandardAction(HINT)();
 
 export const restartGame = createStandardAction(RESTART_GAME)();
 
@@ -39,4 +42,5 @@ export type GameAction = ActionType<
   | typeof finishGame
   | typeof toggleCellFlag
   | typeof revealCell
+  | typeof hint
 >;
