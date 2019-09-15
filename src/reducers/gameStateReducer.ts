@@ -142,20 +142,16 @@ const applyToggleCellFlag = (
 };
 
 const applyHint = (state: AppState): AppState => {
-  var revealedPositions = state.gameState.revealedPositions.slice();
+  if (state.gamePhase !== "InProgress") {
+    return state;
+  }
+  var revealedPositions = state.gameState.revealedPositions;
   for (let i = 0; i < revealedPositions.length; i++) {
     if (!revealedPositions[i] && !state.gameState.minePositions[i]) {
-      revealedPositions[i] = true;
-      break;
+      return applyRevealCell(state, revealCell(i));
     }
   }
-  return {
-    ...state,
-    gameState: {
-      ...state.gameState,
-      revealedPositions: revealedPositions
-    }
-  };
+  return state;
 };
 
 const getAdjucentIndexPositions = (
