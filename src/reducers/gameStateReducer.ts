@@ -105,12 +105,19 @@ const applyRevealCell = (
 
     indexToCheck = positionsToReveal.pop();
   }
+
+  let won =
+    revealedPositions.filter(v => v).length ==
+    state.gameConfiguration.height * state.gameConfiguration.width -
+      state.gameConfiguration.mines;
+
   return {
     ...state,
     gameState: {
       ...state.gameState,
       revealedPositions: revealedPositions
-    }
+    },
+    gamePhase: won ? "Won" : "InProgress"
   };
 };
 

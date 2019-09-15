@@ -15,7 +15,6 @@ storiesOf("CellGrid", module)
   //   })
   .add("Starting Grid", () => {
     let demoStore = store;
-    demoStore.dispatch(startGame());
     return (
       <Provider store={demoStore}>
         <GameStatusContainer />

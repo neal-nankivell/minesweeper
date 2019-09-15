@@ -5,11 +5,14 @@ import GameStatus from "./GameStatus";
 import { startGame } from "../../actions/gameActions";
 
 export const mapStateToProps = (state: AppState) => ({
-  gamePhase: state.gamePhase
+  gamePhase: state.gamePhase,
+  mines: state.gameState.minePositions.filter(v => v).length,
+  flags: state.gameState.flaggedPositions.filter(v => v).length
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => ({
-  restart: () => dispatch(startGame())
+  restart: () => dispatch(startGame()),
+  start: () => dispatch(startGame())
 });
 
 export default connect(
