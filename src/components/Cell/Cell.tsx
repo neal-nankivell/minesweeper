@@ -4,13 +4,13 @@ import CellProps from "./CellProps";
 
 const numberColorMap = [
   "#859900",
-  "#859900",
   "#2aa198",
-  "#2aa198",
-  "#268bd2",
   "#268bd2",
   "#6c71c4",
-  "#6c71c4"
+  "#586e75",
+  "#073642",
+  "#002b36",
+  "#002b36"
 ];
 
 const Cell: React.FC<CellProps> = (props: CellProps) => {

@@ -1,3 +1,28 @@
+@keyframes cell-shake {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  40% {
+    transform: scale(0.97);
+  }
+  60% {
+    transform: scale(0.99) rotate(-3deg);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes cell-flyin {
+  to {
+    transform: scale(1);
+  }
+}
 .cell.revealed {
   background: #fdf6e3;
 }
@@ -17,4 +42,11 @@
   width: 28px;
   font-family: "Courier New", Courier, monospace;
   user-select: none;
+  animation: cell-flyin 150ms ease forwards;
+  transform: scale(0.75);
+}
+.cell:active {
+  animation-name: cell-shake;
+  animation-duration: 200ms;
+  animation-fill-mode: both;
 }
