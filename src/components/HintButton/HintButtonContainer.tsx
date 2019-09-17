@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import { hint } from "../../actions/gameActions";
 import HintButton from "./HintButton";
 
-export const mapStateToProps = (state: AppState) => ({});
+export const mapStateToProps = (state: AppState) => ({
+  disabled: state.gamePhase !== "InProgress"
+});
 
 export const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => ({
   hint: () => dispatch(hint())
