@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { withKnobs, boolean, number } from "@storybook/addon-knobs/react";
 import Cell from "./Cell";
 import { action } from "@storybook/addon-actions";
+import CellConainer from "./CellConainer";
 
 storiesOf("Cell", module)
   .addDecorator(withKnobs)
@@ -125,4 +126,15 @@ storiesOf("Cell", module)
       onClick={action("onClick")}
       onContextMenu={action("onContextMenu")}
     />
-  ));
+  ))
+  .add("Redux Container", () => {
+    let cells = [];
+    for (let i = 0; i < 10; i++) {
+      cells.push(<CellConainer index={i} />);
+    }
+    return (
+      <>
+        <p>First 10 Cells:</p> {cells}
+      </>
+    );
+  });

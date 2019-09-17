@@ -8,7 +8,8 @@ import {
   startGame,
   hint,
   revealCell,
-  toggleCellFlag
+  toggleCellFlag,
+  restartGame
 } from "../actions/gameActions";
 import GamePhase from "../types/GamePhase";
 import AppState from "../types/AppState";
@@ -33,9 +34,10 @@ export const withRedux: StoryDecorator = (getStory: RenderFunction) => {
     groupId
   );
 
+  store.dispatch(restartGame());
   store.dispatch(configureGame({ height, width, mineCount }));
 
-  if (gamePhase != "Setup") {
+  if (gamePhase !== "Setup") {
     store.dispatch(startGame());
     let state = store.getState() as AppState;
 
@@ -46,7 +48,7 @@ export const withRedux: StoryDecorator = (getStory: RenderFunction) => {
     }
 
     let movesPlayed = (height * width - mineCount) / 3;
-    if (gamePhase == "Won") {
+    if (gamePhase === "Won") {
       movesPlayed = height * width;
     }
 
@@ -54,7 +56,7 @@ export const withRedux: StoryDecorator = (getStory: RenderFunction) => {
       store.dispatch(hint());
     }
 
-    if (gamePhase == "Lost") {
+    if (gamePhase === "Lost") {
       var mineIndex = state.gameState.minePositions.indexOf(true);
       store.dispatch(toggleCellFlag(mineIndex));
       store.dispatch(revealCell(mineIndex));

@@ -179,12 +179,25 @@ const getAdjucentIndexPositions = (
   return result;
 };
 
+const applyRestartGame = (state: AppState): AppState => {
+  return {
+    ...state,
+    gameState: {
+      minePositions: [],
+      flaggedPositions: [],
+      neighbourMineCounts: [],
+      revealedPositions: []
+    }
+  };
+};
+
 export default function gameStateReducer(
   state: AppState = initialState,
   action: GameAction
 ) {
   switch (action.type) {
     case getType(restartGame):
+      return applyRestartGame(state);
     case getType(startGame):
       return applyStartGame(state);
     case getType(revealCell):
