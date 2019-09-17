@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import StartGameButton from "./StartGameButton";
 import StartGameButtonContainer from "./StartGameButtonContainer";
 
-storiesOf("Start Game Button", module)
+storiesOf("Components/Start Game Button", module)
   .add("Basic States", () => (
     <>
       <p>Enabled:</p>

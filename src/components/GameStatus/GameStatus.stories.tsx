@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import GameStatus from "./GameStatus";
 import GameStatusContainer from "./GameStatusContainer";
 
-storiesOf("Game Status", module)
+storiesOf("Components/Game Status", module)
   .add("Basic States", () => {
     return (
       <>

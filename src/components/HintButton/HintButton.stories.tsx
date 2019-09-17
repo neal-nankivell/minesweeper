@@ -4,7 +4,7 @@ import HintButton from "./HintButton";
 import { action } from "@storybook/addon-actions";
 import HintButtonContainer from "./HintButtonContainer";
 
-storiesOf("Hint Button", module)
+storiesOf("Components/Hint Button", module)
   .add("Basic States", () => (
     <>
       <p>Enabled:</p>

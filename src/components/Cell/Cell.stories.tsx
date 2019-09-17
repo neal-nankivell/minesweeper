@@ -5,7 +5,7 @@ import Cell from "./Cell";
 import { action } from "@storybook/addon-actions";
 import CellConainer from "./CellConainer";
 
-storiesOf("Cell", module)
+storiesOf("Components/Cell", module)
   .addDecorator(withKnobs)
   .add("Basic states", () => (
     <>
