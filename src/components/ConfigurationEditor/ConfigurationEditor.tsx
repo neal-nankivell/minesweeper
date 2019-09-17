@@ -1,19 +1,41 @@
 import React from "react";
 import ConfigurationEditorProps from "./ConfigurationEditorProps";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    container: {
+      display: "flex",
+      flexWrap: "wrap"
+    },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      width: 200
+    },
+    dense: {
+      marginTop: 19
+    },
+    menu: {
+      width: 200
+    }
+  })
+);
 
 export const ConfigurationEditor: React.FC<
   ConfigurationEditorProps
-> = props => (
-  <form key="config-form">
-    <fieldset>
-      <legend>Configurtation:</legend>
-      <label htmlFor="height">Height</label>
-      <input
+> = props => {
+  const classes = useStyles();
+  return (
+    <form className={classes.container}>
+      <TextField
+        className={classes.textField}
+        label="height"
         disabled={props.disabled}
-        name="height"
         onChange={e =>
           props.updateConfiguration(
-            e.target.valueAsNumber,
+            Number(e.target.value),
             props.width,
             props.mineCount
           )
@@ -22,14 +44,14 @@ export const ConfigurationEditor: React.FC<
         type="number"
       />
 
-      <label htmlFor="width">Width</label>
-      <input
-        name="width"
+      <TextField
+        className={classes.textField}
+        label="Width"
         disabled={props.disabled}
         onChange={e =>
           props.updateConfiguration(
             props.height,
-            e.target.valueAsNumber,
+            Number(e.target.value),
             props.mineCount
           )
         }
@@ -37,20 +59,20 @@ export const ConfigurationEditor: React.FC<
         type="number"
       />
 
-      <label htmlFor="mines">Mines</label>
-      <input
-        name="mines"
+      <TextField
+        className={classes.textField}
+        label="Mines"
         disabled={props.disabled}
         onChange={e =>
           props.updateConfiguration(
             props.height,
             props.width,
-            e.target.valueAsNumber
+            Number(e.target.value)
           )
         }
         value={props.mineCount}
         type="number"
       />
-    </fieldset>
-  </form>
-);
+    </form>
+  );
+};

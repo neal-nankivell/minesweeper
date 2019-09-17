@@ -1,12 +1,26 @@
 import React from "react";
 import StartGameButtonProps from "./StartGameButtonProps";
+import Button from "@material-ui/core/Button";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    button: {
+      margin: theme.spacing(1)
+    }
+  })
+);
 
 export const StartGameButton: React.FC<StartGameButtonProps> = (
   props: StartGameButtonProps
 ) => (
-  <button onClick={props.startGame} disabled={props.disabled}>
+  <Button
+    className={useStyles().button}
+    onClick={props.startGame}
+    disabled={props.disabled}
+  >
     Start Game!
-  </button>
+  </Button>
 );
 
 export default StartGameButton;
