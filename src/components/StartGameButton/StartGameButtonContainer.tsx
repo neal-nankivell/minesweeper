@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import { startGame } from "../../actions/gameActions";
 import StartGameButton from "./StartGameButton";
 
-export const mapStateToProps = (state: AppState) => ({});
+export const mapStateToProps = (state: AppState) => ({
+  disabled: state.gamePhase !== "Setup"
+});
 
 export const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => ({
   startGame: () => dispatch(startGame())
