@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import SetupGameDialogContainer from "./SetupGameDialogContainer";
 import { Typography } from "@material-ui/core";
 
-storiesOf("Components/SetupGameDialog", module).add("Redux Container", () => (
+storiesOf("Components/Setup Game Dialog", module).add("Redux Container", () => (
   <>
     <SetupGameDialogContainer />{" "}
     <Typography variant="body1" gutterBottom>
