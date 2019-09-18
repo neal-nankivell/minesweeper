@@ -5,10 +5,10 @@ import { Button } from "@material-ui/core";
 export const RestartGameButton: React.FC<ReastartGameButtonProps> = props => (
   <Button
     onClick={() => props.restartGame()}
-    color="primary"
     variant="contained"
+    disabled={props.disabled}
   >
-    Restart Game
+    New Game
   </Button>
 );
 
