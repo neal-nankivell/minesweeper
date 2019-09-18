@@ -1,12 +1,11 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, boolean, number } from "@storybook/addon-knobs/react";
+import { boolean, number } from "@storybook/addon-knobs/react";
 import Cell from "./Cell";
 import { action } from "@storybook/addon-actions";
 import CellConainer from "./CellConainer";
 
 storiesOf("Components/Cell", module)
-  .addDecorator(withKnobs)
   .add("Basic states", () => (
     <>
       <Cell
