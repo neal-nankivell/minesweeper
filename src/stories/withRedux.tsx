@@ -13,15 +13,33 @@ import {
 } from "../actions/gameActions";
 import GamePhase from "../types/GamePhase";
 import AppState from "../types/AppState";
+import InitialState from "../types/InitialState";
 
 export const withRedux: StoryDecorator = (getStory: RenderFunction) => {
   const demoStore = store;
 
   const groupId = "Redux State";
 
-  const width = number("Grid Width", 20, undefined, groupId);
-  const height = number("Grid Height", 10, undefined, groupId);
-  const mineCount = number("Mine Count", 50, undefined, groupId);
+  const initialState = InitialState;
+
+  const width = number(
+    "Grid Width",
+    initialState.gameConfiguration.width,
+    undefined,
+    groupId
+  );
+  const height = number(
+    "Grid Height",
+    initialState.gameConfiguration.height,
+    undefined,
+    groupId
+  );
+  const mineCount = number(
+    "Mine Count",
+    initialState.gameConfiguration.mines,
+    undefined,
+    groupId
+  );
   const gamePhase = select<GamePhase>(
     "Game Phase",
     {

@@ -18,6 +18,8 @@ export const StartGameButton: React.FC<StartGameButtonProps> = (
     className={useStyles().button}
     onClick={props.startGame}
     disabled={props.disabled}
+    color="primary"
+    variant="contained"
   >
     Start Game!
   </Button>
