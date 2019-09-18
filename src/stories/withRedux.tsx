@@ -17,8 +17,8 @@ import InitialState from "../types/InitialState";
 
 export const withRedux = makeDecorator({
   name: "withRedux",
-  parameterName: "myParameter",
-  skipIfNoParametersOrOptions: true,
+  parameterName: "_",
+  skipIfNoParametersOrOptions: false,
   wrapper: (getStory, context) => {
     const demoStore = store;
 
