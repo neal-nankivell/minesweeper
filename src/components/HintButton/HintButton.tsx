@@ -16,6 +16,7 @@ export const HintButton: React.FC<HintButtonProps> = (
 ) => (
   <Button
     className={useStyles().button}
+    variant="contained"
     onClick={props.hint}
     disabled={props.disabled}
   >

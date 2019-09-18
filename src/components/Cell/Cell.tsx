@@ -1,6 +1,7 @@
 import "./Cell.css";
 import React from "react";
 import CellProps from "./CellProps";
+import { ButtonBase } from "@material-ui/core";
 
 const numberColorMap = [
   "#859900",
@@ -29,19 +30,21 @@ const Cell: React.FC<CellProps> = (props: CellProps) => {
     }
   }
   return (
-    <div
-      style={{ color: color }}
-      className={`cell ${props.isRevealed ? "revealed" : ""}`}
-      onClick={props.onClick}
-      onContextMenu={e => {
-        e.preventDefault();
-        e.stopPropagation();
-        props.onContextMenu();
-        return false;
-      }}
-    >
-      {value}
-    </div>
+    <ButtonBase>
+      <div
+        style={{ color: color }}
+        className={`cell ${props.isRevealed ? "revealed" : ""}`}
+        onClick={props.onClick}
+        onContextMenu={e => {
+          e.preventDefault();
+          e.stopPropagation();
+          props.onContextMenu();
+          return false;
+        }}
+      >
+        {value}
+      </div>
+    </ButtonBase>
   );
 };
 
