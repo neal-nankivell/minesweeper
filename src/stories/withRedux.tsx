@@ -16,8 +16,6 @@ import GamePhase from "../types/GamePhase";
 import AppState from "../types/AppState";
 import InitialState from "../types/InitialState";
 import ThemeContainer from "../components/ThemeContainer/ThemeContainer";
-import { addParameters } from "@storybook/react";
-import { themes } from "@storybook/theming";
 
 export const withRedux = makeDecorator({
   name: "withRedux",
