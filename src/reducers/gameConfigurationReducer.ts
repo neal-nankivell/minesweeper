@@ -5,6 +5,8 @@ import AppState from "../types/AppState";
 
 const initialState: AppState = InitialState;
 
+const constrainInput = (num: number) => Math.min(Math.max(num, 5), 50);
+
 const applyGameConfiguration = (
   state: AppState,
   action: ReturnType<typeof configureGame>
@@ -12,10 +14,10 @@ const applyGameConfiguration = (
   return {
     ...state,
     gameConfiguration: {
-      height: action.payload.height,
-      width: action.payload.width,
+      height: constrainInput(action.payload.height),
+      width: constrainInput(action.payload.width),
       mines: Math.min(
-        action.payload.mineCount,
+        constrainInput(action.payload.mineCount),
         action.payload.height * action.payload.width
       )
     }

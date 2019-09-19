@@ -2,6 +2,7 @@ import React from "react";
 import ConfigurationEditorProps from "./ConfigurationEditorProps";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { Slider, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,14 +34,14 @@ export const ConfigurationEditor: React.FC<
         className={classes.textField}
         label="height"
         disabled={props.disabled}
-        onChange={e =>
+        onBlur={e =>
           props.updateConfiguration(
             Number(e.target.value),
             props.width,
             props.mineCount
           )
         }
-        value={props.height}
+        defaultValue={props.height}
         type="number"
       />
 
@@ -48,14 +49,14 @@ export const ConfigurationEditor: React.FC<
         className={classes.textField}
         label="Width"
         disabled={props.disabled}
-        onChange={e =>
+        onBlur={e =>
           props.updateConfiguration(
             props.height,
             Number(e.target.value),
             props.mineCount
           )
         }
-        value={props.width}
+        defaultValue={props.width}
         type="number"
       />
 
@@ -63,14 +64,14 @@ export const ConfigurationEditor: React.FC<
         className={classes.textField}
         label="Mines"
         disabled={props.disabled}
-        onChange={e =>
+        onBlur={e =>
           props.updateConfiguration(
             props.height,
             props.width,
             Number(e.target.value)
           )
         }
-        value={props.mineCount}
+        defaultValue={props.mineCount}
         type="number"
       />
     </form>
