@@ -3,38 +3,33 @@ import CellProps from "./CellProps";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = (revealed: boolean, colorOverride: string | undefined) =>
-  makeStyles(theme => ({
-    cell: {
-      background: revealed
-        ? theme.palette.background.default
-        : theme.palette.primary.main,
-      border: `0.5px solid ${theme.palette.divider}`,
-      color: colorOverride || theme.palette.primary.contrastText,
-      float: "left",
-      fontSize: "16px",
-      fontWeight: "bold",
-      lineHeight: "28px",
-      height: "28px",
-      marginRight: "-1px",
-      marginTop: "-1px",
-      padding: 0,
-      textAlign: "center",
-      width: "28px",
-      fontFamily: '"Courier New", Courier, monospace',
-      userSelect: "none"
-    }
-  }))();
+  makeStyles(theme => {
+    const background = revealed
+      ? theme.palette.background.default
+      : theme.palette.primary.main;
+    const color = colorOverride || theme.palette.getContrastText(background);
+    return {
+      cell: {
+        background: background,
+        border: `0.5px solid ${theme.palette.divider}`,
+        color: color,
+        float: "left",
+        fontSize: "16px",
+        fontWeight: "bold",
+        lineHeight: "28px",
+        height: "28px",
+        marginRight: "-1px",
+        marginTop: "-1px",
+        padding: 0,
+        textAlign: "center",
+        width: "28px",
+        fontFamily: '"Courier New", Courier, monospace',
+        userSelect: "none"
+      }
+    };
+  })();
 
-const numberColorMap = [
-  "#859900",
-  "#2aa198",
-  "#268bd2",
-  "#6c71c4",
-  "#586e75",
-  "#073642",
-  "#002b36",
-  "#002b36"
-];
+const numberColorMap = ["#859900", "#2aa198", "#268bd2", "#6c71c4"];
 
 const Cell: React.FC<CellProps> = (props: CellProps) => {
   let value: string = "";
