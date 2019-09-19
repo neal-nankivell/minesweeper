@@ -2,7 +2,6 @@ import React from "react";
 import ConfigurationEditorProps from "./ConfigurationEditorProps";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { Slider, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
