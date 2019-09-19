@@ -23,9 +23,8 @@ export const withRedux = makeDecorator({
   skipIfNoParametersOrOptions: false,
   wrapper: (getStory, context) => {
     const demoStore = store;
-    let state = store.getState() as AppState;
-
     const groupId = "Redux State";
+    let state = store.getState() as AppState;
 
     const initialState = InitialState;
 
@@ -75,7 +74,7 @@ export const withRedux = makeDecorator({
 
     if (gamePhase !== "Setup") {
       store.dispatch(startGame());
-
+      state = store.getState() as AppState;
       for (let i = 0; i < state.gameState.minePositions.length / 2; i++) {
         if (state.gameState.minePositions[i] === true) {
           store.dispatch(toggleCellFlag(i));
