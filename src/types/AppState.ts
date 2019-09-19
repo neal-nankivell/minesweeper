@@ -6,6 +6,7 @@ export interface AppState {
   gamePhase: GamePhase;
   gameConfiguration: GameConfiguration;
   gameState: GameState;
+  theme: "light" | "dark";
 }
 
 export default AppState;

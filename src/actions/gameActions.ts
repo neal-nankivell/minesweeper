@@ -5,7 +5,8 @@ import {
   REVEAL_CELL,
   START_GAME,
   TOGGLE_CELL_FLAG,
-  HINT
+  HINT,
+  TOGGLE_THEME
 } from "./types";
 import { ActionType, createStandardAction } from "typesafe-actions";
 
@@ -35,6 +36,8 @@ export const toggleCellFlag = createStandardAction(TOGGLE_CELL_FLAG).map(
   (cell: number) => ({ payload: { cell } })
 );
 
+export const toggleTheme = createStandardAction(TOGGLE_THEME)();
+
 export type GameAction = ActionType<
   | typeof configureGame
   | typeof restartGame
@@ -43,4 +46,5 @@ export type GameAction = ActionType<
   | typeof toggleCellFlag
   | typeof revealCell
   | typeof hint
+  | typeof toggleTheme
 >;

@@ -9,11 +9,15 @@ import {
   hint,
   revealCell,
   toggleCellFlag,
-  restartGame
+  restartGame,
+  toggleTheme
 } from "../actions/gameActions";
 import GamePhase from "../types/GamePhase";
 import AppState from "../types/AppState";
 import InitialState from "../types/InitialState";
+import ThemeContainer from "../components/ThemeContainer/ThemeContainer";
+import { addParameters } from "@storybook/react";
+import { themes } from "@storybook/theming";
 
 export const withRedux = makeDecorator({
   name: "withRedux",
@@ -21,10 +25,22 @@ export const withRedux = makeDecorator({
   skipIfNoParametersOrOptions: false,
   wrapper: (getStory, context) => {
     const demoStore = store;
+    let state = store.getState() as AppState;
 
     const groupId = "Redux State";
 
     const initialState = InitialState;
+
+    const theme = select(
+      "Theme",
+      { ["Light"]: "light", ["Dark"]: "dark" },
+      "light",
+      groupId
+    );
+
+    if (theme !== state.theme) {
+      store.dispatch(toggleTheme());
+    }
 
     const width = number(
       "Grid Width",
@@ -61,7 +77,6 @@ export const withRedux = makeDecorator({
 
     if (gamePhase !== "Setup") {
       store.dispatch(startGame());
-      let state = store.getState() as AppState;
 
       for (let i = 0; i < state.gameState.minePositions.length / 2; i++) {
         if (state.gameState.minePositions[i] === true) {
@@ -85,7 +100,11 @@ export const withRedux = makeDecorator({
       }
     }
 
-    return <Provider store={demoStore}>{getStory(context)}</Provider>;
+    return (
+      <Provider store={demoStore}>
+        <ThemeContainer>{getStory(context)}</ThemeContainer>
+      </Provider>
+    );
   }
 });
 

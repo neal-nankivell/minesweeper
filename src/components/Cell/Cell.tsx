@@ -1,7 +1,29 @@
-import "./Cell.css";
 import React from "react";
 import CellProps from "./CellProps";
-import { ButtonBase } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = (revealed: boolean, colorOverride: string | undefined) =>
+  makeStyles(theme => ({
+    cell: {
+      background: revealed
+        ? theme.palette.background.default
+        : theme.palette.primary.main,
+      border: `0.5px solid ${theme.palette.divider}`,
+      color: colorOverride || theme.palette.primary.contrastText,
+      float: "left",
+      fontSize: "16px",
+      fontWeight: "bold",
+      lineHeight: "28px",
+      height: "28px",
+      marginRight: "-1px",
+      marginTop: "-1px",
+      padding: 0,
+      textAlign: "center",
+      width: "28px",
+      fontFamily: '"Courier New", Courier, monospace',
+      userSelect: "none"
+    }
+  }))();
 
 const numberColorMap = [
   "#859900",
@@ -16,10 +38,9 @@ const numberColorMap = [
 
 const Cell: React.FC<CellProps> = (props: CellProps) => {
   let value: string = "";
-  let color: string = "#93a1a1";
+  let color: string | undefined = undefined;
   if (!props.isRevealed && props.isFlagged) {
     value = "⚑";
-    //color = "#cb4b16";
   } else if (props.isRevealed) {
     if (props.isMine) {
       value = "☀";
@@ -29,22 +50,21 @@ const Cell: React.FC<CellProps> = (props: CellProps) => {
       color = numberColorMap[props.numberOfNeighbourMines - 1];
     }
   }
+
+  const classes = useStyles(props.isRevealed, color);
   return (
-    <ButtonBase>
-      <div
-        style={{ color: color }}
-        className={`cell ${props.isRevealed ? "revealed" : ""}`}
-        onClick={props.onClick}
-        onContextMenu={e => {
-          e.preventDefault();
-          e.stopPropagation();
-          props.onContextMenu();
-          return false;
-        }}
-      >
-        {value}
-      </div>
-    </ButtonBase>
+    <div
+      className={classes.cell}
+      onClick={props.onClick}
+      onContextMenu={e => {
+        e.preventDefault();
+        e.stopPropagation();
+        props.onContextMenu();
+        return false;
+      }}
+    >
+      {value}
+    </div>
   );
 };
 

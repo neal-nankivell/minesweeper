@@ -2,6 +2,7 @@ import React from "react";
 import { AppBar, Typography, makeStyles, Toolbar } from "@material-ui/core";
 import HintButtonContainer from "../HintButton/HintButtonContainer";
 import RestartGameButtonContainer from "../RestartGameButton/RestartGameButtonContainer";
+import ThemeSwitchContainer from "../ThemeSwitch/ThemeSwitchContainer";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -17,6 +18,8 @@ export const AppToolbar: React.FC = () => {
         <Typography variant="h6" className={classes.title}>
           MineSweeper
         </Typography>
+        <ThemeSwitchContainer />
+
         <HintButtonContainer />
         <RestartGameButtonContainer />
       </Toolbar>

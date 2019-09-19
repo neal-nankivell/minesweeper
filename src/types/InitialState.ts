@@ -12,7 +12,8 @@ const InitialState: AppState = {
     minePositions: [],
     neighbourMineCounts: [],
     revealedPositions: []
-  }
+  },
+  theme: "light"
 };
 
 export default InitialState;

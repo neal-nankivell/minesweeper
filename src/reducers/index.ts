@@ -5,6 +5,7 @@ import gamePhaseReducer from "./gamePhaseReducer";
 import gameStateReducer from "./gameStateReducer";
 import InitialState from "../types/InitialState";
 import { GameAction } from "../actions/gameActions";
+import themeReducer from "./themeReducer";
 
 const reduceReducers: (
   initialState: AppState,
@@ -27,5 +28,6 @@ const reduceReducers: (
 export default reduceReducers(InitialState, [
   gameConfigurationReducer,
   gamePhaseReducer,
-  gameStateReducer
+  gameStateReducer,
+  themeReducer
 ]);

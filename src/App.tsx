@@ -4,15 +4,15 @@ import { Provider } from "react-redux";
 import store from "./Store";
 import AppToolbar from "./components/AppToolbar/AppToolbar";
 import AppBody from "./components/AppBody/AppBody";
-import { Container } from "@material-ui/core";
+import ThemeContainer from "./components/ThemeContainer/ThemeContainer";
 
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <AppToolbar />
-      <Container component="main" maxWidth="sm">
+      <ThemeContainer>
+        <AppToolbar />
         <AppBody />
-      </Container>
+      </ThemeContainer>
     </Provider>
   );
 };
