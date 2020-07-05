@@ -6,37 +6,35 @@ import {
   START_GAME,
   TOGGLE_CELL_FLAG,
   HINT,
-  TOGGLE_THEME
+  TOGGLE_THEME,
 } from "./types";
-import { ActionType, createStandardAction } from "typesafe-actions";
+import { ActionType, createAction } from "typesafe-actions";
 
-export const configureGame = createStandardAction(CONFIGURE_GAME).map(
-  (config: { height: number; width: number; mineCount: number }) => ({
-    payload: config
-  })
-);
+export const configureGame = createAction(
+  CONFIGURE_GAME,
+  (config: { height: number; width: number; mineCount: number }) => config
+)();
 
-export const revealCell = createStandardAction(REVEAL_CELL).map(
-  (cell: number) => ({ payload: { cell } })
-);
+export const revealCell = createAction(REVEAL_CELL, (cell: number) => ({
+  cell,
+}))();
 
-export const hint = createStandardAction(HINT)();
+export const hint = createAction(HINT)();
 
-export const restartGame = createStandardAction(RESTART_GAME)();
+export const restartGame = createAction(RESTART_GAME)();
 
-export const startGame = createStandardAction(START_GAME)();
+export const startGame = createAction(START_GAME)();
 
-export const finishGame = createStandardAction(FINISH_GAME).map(
-  (winner: boolean) => ({
-    payload: { winner }
-  })
-);
+export const finishGame = createAction(FINISH_GAME, (winner: boolean) => ({
+  winner,
+}))();
 
-export const toggleCellFlag = createStandardAction(TOGGLE_CELL_FLAG).map(
-  (cell: number) => ({ payload: { cell } })
-);
+export const toggleCellFlag = createAction(
+  TOGGLE_CELL_FLAG,
+  (cell: number) => ({ cell })
+)();
 
-export const toggleTheme = createStandardAction(TOGGLE_THEME)();
+export const toggleTheme = createAction(TOGGLE_THEME)();
 
 export type GameAction = ActionType<
   | typeof configureGame
