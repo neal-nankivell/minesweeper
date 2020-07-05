@@ -2,7 +2,7 @@ import React from "react";
 import { makeDecorator } from "@storybook/addons";
 import { Provider } from "react-redux";
 import store from "../Store";
-import { number, select } from "@storybook/addon-knobs/react";
+import { number, select } from "@storybook/addon-knobs";
 import {
   configureGame,
   startGame,
@@ -10,7 +10,7 @@ import {
   revealCell,
   toggleCellFlag,
   restartGame,
-  toggleTheme
+  toggleTheme,
 } from "../actions/gameActions";
 import GamePhase from "../types/GamePhase";
 import AppState from "../types/AppState";
@@ -63,7 +63,7 @@ export const withRedux = makeDecorator({
         ["Setup"]: "Setup",
         ["In Progress"]: "InProgress",
         ["Won"]: "Won",
-        ["Lost"]: "Lost"
+        ["Lost"]: "Lost",
       },
       "InProgress",
       groupId
@@ -102,7 +102,7 @@ export const withRedux = makeDecorator({
         <ThemeContainer>{getStory(context)}</ThemeContainer>
       </Provider>
     );
-  }
+  },
 });
 
 export default withRedux;

@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { boolean, number } from "@storybook/addon-knobs/react";
+import { boolean, number } from "@storybook/addon-knobs";
 import Cell from "./Cell";
 import { action } from "@storybook/addon-actions";
 import CellConainer from "./CellConainer";
@@ -118,7 +118,7 @@ storiesOf("Components/Cell", module)
           min: 0,
           max: 8,
           range: false,
-          step: 1
+          step: 1,
         },
         "props"
       )}
