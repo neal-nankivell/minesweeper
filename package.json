@@ -47,7 +47,7 @@
     "@storybook/addon-links": "^6.0.5",
     "@storybook/addon-viewport": "^6.0.5",
     "@storybook/addons": "^6.0.5",
-    "@storybook/react": "^6.0.5",
+    "@storybook/react": "^6.0.10",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/react-redux": "^7.1.9",
