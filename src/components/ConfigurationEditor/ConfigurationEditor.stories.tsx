@@ -5,8 +5,10 @@ import { number, boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import ConfigurationEditorContainer from "./ConfigurationEditorContainer";
 import { Typography, Container, Paper } from "@material-ui/core";
+import withRedux from "../../stories/withRedux";
 
 storiesOf("Components/Configuration Editor", module)
+  .addDecorator(withRedux)
   .add("Basic States", () => {
     return (
       <ConfigurationEditor
