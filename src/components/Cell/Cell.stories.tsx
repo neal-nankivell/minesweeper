@@ -4,8 +4,10 @@ import { boolean, number } from "@storybook/addon-knobs";
 import Cell from "./Cell";
 import { action } from "@storybook/addon-actions";
 import CellConainer from "./CellConainer";
+import withRedux from "../../stories/withRedux";
 
 storiesOf("Components/Cell", module)
+  .addDecorator(withRedux)
   .add("Basic states", () => (
     <>
       <Cell

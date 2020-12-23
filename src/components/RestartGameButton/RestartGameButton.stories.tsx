@@ -4,8 +4,10 @@ import RestartGameButton from "./RestartGameButton";
 import { action } from "@storybook/addon-actions";
 import RestartGameButtonContainer from "./RestartGameButtonContainer";
 import { Typography } from "@material-ui/core";
+import withRedux from "../../stories/withRedux";
 
 storiesOf("Components/Restart Game Button", module)
+  .addDecorator(withRedux)
   .add("Basic States", () => (
     <>
       <Typography variant={"subtitle1"}>Enabled:</Typography>
