@@ -50,7 +50,7 @@
     "@storybook/react": "^6.1.11",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/react-redux": "^7.1.13",
+    "@types/react-redux": "^7.1.21",
     "@types/storybook__addon-actions": "^5.2.1",
     "@types/storybook__addon-knobs": "^5.2.1",
     "@types/storybook__react": "^5.2.1",
